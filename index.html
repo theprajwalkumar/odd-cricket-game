@@ -9,30 +9,79 @@
 <body>
     <div class="container">
         <h1>Odd Cricket Game</h1>
-        <div class="scoreboard">
-            <div class="score-item">
-                <span class="label">Total Runs</span>
-                <span id="totalRuns" class="value">0</span>
+        
+        <div class="ipl-logos-track">
+            <div class="ipl-logos">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Chennai_Super_Kings_Logo.svg/120px-Chennai_Super_Kings_Logo.svg.png" alt="CSK" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Mumbai_Indians_Logo.svg/120px-Mumbai_Indians_Logo.svg.png" alt="MI" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Royal_Challengers_Bangalore_Logo.svg/120px-Royal_Challengers_Bangalore_Logo.svg.png" alt="RCB" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/Kolkata_Knight_Riders_Logo.svg/120px-Kolkata_Knight_Riders_Logo.svg.png" alt="KKR" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Delhi_Capitals_Logo.svg/120px-Delhi_Capitals_Logo.svg.png" alt="DC" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Rajasthan_Royals_Logo.svg/120px-Rajasthan_Royals_Logo.svg.png" alt="RR" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/81/Sunrisers_Hyderabad_Logo.svg/120px-Sunrisers_Hyderabad_Logo.svg.png" alt="SRH" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e4/Punjab_Kings_Logo.svg/120px-Punjab_Kings_Logo.svg.png" alt="PBKS" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Lucknow_Super_Giants_Logo.svg/120px-Lucknow_Super_Giants_Logo.svg.png" alt="LSG" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/Gujarat_Titans_Logo.svg/120px-Gujarat_Titans_Logo.svg.png" alt="GT" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Chennai_Super_Kings_Logo.svg/120px-Chennai_Super_Kings_Logo.svg.png" alt="CSK" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Mumbai_Indians_Logo.svg/120px-Mumbai_Indians_Logo.svg.png" alt="MI" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Royal_Challengers_Bangalore_Logo.svg/120px-Royal_Challengers_Bangalore_Logo.svg.png" alt="RCB" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/Kolkata_Knight_Riders_Logo.svg/120px-Kolkata_Knight_Riders_Logo.svg.png" alt="KKR" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Delhi_Capitals_Logo.svg/120px-Delhi_Capitals_Logo.svg.png" alt="DC" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Rajasthan_Royals_Logo.svg/120px-Rajasthan_Royals_Logo.svg.png" alt="RR" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/81/Sunrisers_Hyderabad_Logo.svg/120px-Sunrisers_Hyderabad_Logo.svg.png" alt="SRH" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e4/Punjab_Kings_Logo.svg/120px-Punjab_Kings_Logo.svg.png" alt="PBKS" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Lucknow_Super_Giants_Logo.svg/120px-Lucknow_Super_Giants_Logo.svg.png" alt="LSG" class="ipl-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/Gujarat_Titans_Logo.svg/120px-Gujarat_Titans_Logo.svg.png" alt="GT" class="ipl-logo">
             </div>
-            <div class="score-item">
-                <span class="label">Status</span>
-                <span id="status" class="value">Pick a number (1-6) to bat!</span>
+        </div>
+
+        <div id="teamSelection" class="team-selection">
+            <h2>Select Your Team</h2>
+            <div class="teams-grid" id="teamsGrid"></div>
+        </div>
+
+        <div id="gameArea" class="game-area" style="display: none;">
+            <div class="match-info">
+                <div class="team-display">
+                    <img id="playerTeamLogo" class="team-logo" alt="Your Team">
+                    <span id="playerTeamName" class="team-name"></span>
+                </div>
+                <span class="vs">VS</span>
+                <div class="team-display">
+                    <img id="opponentTeamLogo" class="team-logo" alt="Opponent">
+                    <span id="opponentTeamName" class="team-name"></span>
+                </div>
             </div>
-        </div>
-        <div class="bowler-choice">
-            <p>Bowler's last choice: <span id="bowlerChoice">-</span></p>
-        </div>
-        <div class="batting-options" id="battingOptions">
-            <button class="bat-btn" data-run="1">1</button>
-            <button class="bat-btn" data-run="2">2</button>
-            <button class="bat-btn" data-run="3">3</button>
-            <button class="bat-btn" data-run="4">4</button>
-            <button class="bat-btn" data-run="5">5</button>
-            <button class="bat-btn" data-run="6">6</button>
-        </div>
-        <div class="out-message" id="outMessage" style="display: none;">
-            <p>You're out! Final score: <span id="finalScore">0</span> runs.</p>
-            <button id="resetBtn">Play Again</button>
+
+            <div class="bat-ball" id="batBall">
+                <div class="bat"></div>
+                <div class="ball"></div>
+            </div>
+
+            <div class="scoreboard">
+                <div class="score-item">
+                    <span class="label">Total Runs</span>
+                    <span id="totalRuns" class="value">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">Status</span>
+                    <span id="status" class="value">You are batting!</span>
+                </div>
+            </div>
+
+            <div class="batting-options" id="battingOptions">
+                <button class="bat-btn" data-run="1">1</button>
+                <button class="bat-btn" data-run="2">2</button>
+                <button class="bat-btn" data-run="3">3</button>
+                <button class="bat-btn" data-run="4">4</button>
+                <button class="bat-btn" data-run="5">5</button>
+                <button class="bat-btn" data-run="6">6</button>
+            </div>
+
+            <div class="out-message" id="outMessage" style="display: none;">
+                <p>You're out! Final score: <span id="finalScore">0</span> runs.</p>
+                <button id="resetBtn">Play Again</button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
