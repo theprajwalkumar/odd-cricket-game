@@ -1,0 +1,12 @@
+{
+  "name": "ipl-cricket-showdown",
+  "version": "1.0.0",
+  "description": "IPL Cricket Showdown - Hand Cricket Game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
