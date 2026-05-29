@@ -1,14 +1,14 @@
 const teams = [
-    { name: 'CSK', fullName: 'Chennai Super Kings', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Chennai_Super_Kings_Logo.svg/120px-Chennai_Super_Kings_Logo.svg.png' },
-    { name: 'MI', fullName: 'Mumbai Indians', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Mumbai_Indians_Logo.svg/120px-Mumbai_Indians_Logo.svg.png' },
-    { name: 'RCB', fullName: 'Royal Challengers Bangalore', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Royal_Challengers_Bangalore_Logo.svg/120px-Royal_Challengers_Bangalore_Logo.svg.png' },
-    { name: 'KKR', fullName: 'Kolkata Knight Riders', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/Kolkata_Knight_Riders_Logo.svg/120px-Kolkata_Knight_Riders_Logo.svg.png' },
-    { name: 'DC', fullName: 'Delhi Capitals', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Delhi_Capitals_Logo.svg/120px-Delhi_Capitals_Logo.svg.png' },
-    { name: 'RR', fullName: 'Rajasthan Royals', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Rajasthan_Royals_Logo.svg/120px-Rajasthan_Royals_Logo.svg.png' },
-    { name: 'SRH', fullName: 'Sunrisers Hyderabad', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/81/Sunrisers_Hyderabad_Logo.svg/120px-Sunrisers_Hyderabad_Logo.svg.png' },
-    { name: 'PBKS', fullName: 'Punjab Kings', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e4/Punjab_Kings_Logo.svg/120px-Punjab_Kings_Logo.svg.png' },
-    { name: 'LSG', fullName: 'Lucknow Super Giants', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Lucknow_Super_Giants_Logo.svg/120px-Lucknow_Super_Giants_Logo.svg.png' },
-    { name: 'GT', fullName: 'Gujarat Titans', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/Gujarat_Titans_Logo.svg/120px-Gujarat_Titans_Logo.svg.png' }
+    { name: 'CSK', fullName: 'Chennai Super Kings', color: '#FFCC00', textColor: '#1a1a2e' },
+    { name: 'MI', fullName: 'Mumbai Indians', color: '#004B93', textColor: '#fff' },
+    { name: 'RCB', fullName: 'Royal Challengers Bangalore', color: '#EC1C24', textColor: '#fff' },
+    { name: 'KKR', fullName: 'Kolkata Knight Riders', color: '#3A225D', textColor: '#fff' },
+    { name: 'DC', fullName: 'Delhi Capitals', color: '#004C93', textColor: '#fff' },
+    { name: 'RR', fullName: 'Rajasthan Royals', color: '#EA1A85', textColor: '#fff' },
+    { name: 'SRH', fullName: 'Sunrisers Hyderabad', color: '#FF822A', textColor: '#fff' },
+    { name: 'PBKS', fullName: 'Punjab Kings', color: '#DD1F2D', textColor: '#fff' },
+    { name: 'LSG', fullName: 'Lucknow Super Giants', color: '#A4D9E7', textColor: '#1a1a2e' },
+    { name: 'GT', fullName: 'Gujarat Titans', color: '#0B4EA2', textColor: '#fff' }
 ];
 
 let totalRuns = 0;
@@ -37,13 +37,28 @@ const outMessage = document.getElementById('outMessage');
 const finalScoreEl = document.getElementById('finalScore');
 const resetBtn = document.getElementById('resetBtn');
 
+function createTeamLogo(team, size) {
+    const div = document.createElement('div');
+    div.className = 'team-logo-initials';
+    div.textContent = team.name;
+    div.style.width = size + 'px';
+    div.style.height = size + 'px';
+    div.style.background = team.color;
+    div.style.color = team.textColor;
+    div.style.fontSize = (size * 0.32) + 'px';
+    return div;
+}
 
 function initTeamSelection() {
     teamsGrid.innerHTML = '';
     teams.forEach(team => {
         const card = document.createElement('div');
         card.className = 'team-card';
-        card.innerHTML = `<img src="${team.logo}" alt="${team.name}"><span>${team.name}</span>`;
+        const logo = createTeamLogo(team, 55);
+        card.appendChild(logo);
+        const span = document.createElement('span');
+        span.textContent = team.name;
+        card.appendChild(span);
         card.addEventListener('click', () => selectTeam(team));
         teamsGrid.appendChild(card);
     });
@@ -54,9 +69,14 @@ function selectTeam(team) {
     let availableTeams = teams.filter(t => t.name !== team.name);
     opponentTeam = availableTeams[Math.floor(Math.random() * availableTeams.length)];
 
-    playerTeamLogo.src = playerTeam.logo;
+    const pLogo = createTeamLogo(playerTeam, 65);
+    playerTeamLogo.innerHTML = '';
+    playerTeamLogo.appendChild(pLogo);
     playerTeamName.textContent = playerTeam.fullName;
-    opponentTeamLogo.src = opponentTeam.logo;
+
+    const oLogo = createTeamLogo(opponentTeam, 65);
+    opponentTeamLogo.innerHTML = '';
+    opponentTeamLogo.appendChild(oLogo);
     opponentTeamName.textContent = opponentTeam.fullName;
 
     teamSelection.style.display = 'none';

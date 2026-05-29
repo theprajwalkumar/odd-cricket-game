@@ -35,14 +35,12 @@ body {
 }
 
 h1 {
-    color: #1a1a2e;
     margin-bottom: 20px;
     font-size: 2.2rem;
     background: linear-gradient(135deg, #667eea, #764ba2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: none;
     font-weight: 800;
     letter-spacing: -0.5px;
 }
@@ -70,11 +68,18 @@ h2 {
 }
 
 .ipl-logo {
-    width: 45px;
-    height: 45px;
-    margin: 0 12px;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    width: 50px;
+    height: 50px;
+    margin: 0 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s;
 }
 
@@ -140,24 +145,28 @@ h2 {
     transform: translateY(-2px) scale(0.98);
 }
 
-.team-card img {
-    width: 55px;
-    height: 55px;
-    object-fit: contain;
-    margin-bottom: 6px;
-    transition: transform 0.3s;
-}
-
-.team-card:hover img {
-    transform: scale(1.1);
-}
-
 .team-card span {
     display: block;
     font-size: 0.75rem;
     font-weight: 700;
     color: #333;
     letter-spacing: 0.5px;
+    margin-top: 6px;
+}
+
+.team-logo-initials {
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.team-card:hover .team-logo-initials {
+    transform: scale(1.1);
 }
 
 .match-info {
@@ -177,18 +186,9 @@ h2 {
 }
 
 .team-logo {
-    width: 65px;
-    height: 65px;
-    object-fit: contain;
-    display: block;
+    display: flex;
+    justify-content: center;
     margin: 0 auto 8px;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-    animation: logoFloat 3s ease-in-out infinite;
-}
-
-@keyframes logoFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
 }
 
 .team-name {
@@ -252,12 +252,8 @@ h2 {
 }
 
 @keyframes bowl {
-    0%, 100% {
-        transform: translateX(-60px);
-    }
-    50% {
-        transform: translateX(60px);
-    }
+    0%, 100% { transform: translateX(-60px); }
+    50% { transform: translateX(60px); }
 }
 
 .bat {
@@ -291,7 +287,7 @@ h2 {
 .ball {
     width: 32px;
     height: 32px;
-    background: linear-gradient(135deg, #ff6b6b, #d32f2f);
+    background: radial-gradient(circle at 35% 35%, #ff6b6b, #d32f2f);
     border-radius: 50%;
     position: relative;
     animation: roll 0.4s linear infinite;
@@ -493,19 +489,9 @@ h2 {
         padding: 10px 6px;
     }
 
-    .team-card img {
-        width: 45px;
-        height: 45px;
-    }
-
     .match-info {
         padding: 15px 10px;
         flex-direction: row;
-    }
-
-    .team-logo {
-        width: 50px;
-        height: 50px;
     }
 
     .vs {
@@ -523,9 +509,10 @@ h2 {
     }
 
     .ipl-logo {
-        width: 35px;
-        height: 35px;
-        margin: 0 8px;
+        width: 40px;
+        height: 40px;
+        font-size: 0.6rem;
+        margin: 0 6px;
     }
 
     .bat-ball {
