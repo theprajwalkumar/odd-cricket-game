@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Odd Cricket Game</title>
+    <title>Cricket Showdown - IPL Edition</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Odd Cricket Game</h1>
-        
+        <h1>IPL Cricket Showdown</h1>
+
         <div class="ipl-logos-track">
             <div class="ipl-logos">
                 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Chennai_Super_Kings_Logo.svg/120px-Chennai_Super_Kings_Logo.svg.png" alt="CSK" class="ipl-logo">
@@ -60,12 +60,8 @@
 
             <div class="scoreboard">
                 <div class="score-item">
-                    <span class="label">Total Runs</span>
+                    <span id="runsLabel" class="label">Your Score</span>
                     <span id="totalRuns" class="value">0</span>
-                </div>
-                <div class="score-item">
-                    <span class="label">Status</span>
-                    <span id="status" class="value">You are batting!</span>
                 </div>
             </div>
 
@@ -78,8 +74,10 @@
                 <button class="bat-btn" data-run="6">6</button>
             </div>
 
+            <div id="status" class="status-text">Select a number to play!</div>
+
             <div class="out-message" id="outMessage" style="display: none;">
-                <p>You're out! Final score: <span id="finalScore">0</span> runs.</p>
+                <p id="finalScore">0 - 0</p>
                 <button id="resetBtn">Play Again</button>
             </div>
         </div>
